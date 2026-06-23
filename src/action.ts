@@ -60,7 +60,7 @@ function setOutputs(labels: { name: string }[]) {
   if (!outputValue) {
     outputValue =
       keyedValues.length > 0
-        ? keyedValues.sort()[0]
+        ? keyedValues.sort()[0]!
         : core.getInput("default_label_value");
   }
 
