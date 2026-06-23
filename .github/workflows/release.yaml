@@ -3,15 +3,15 @@ name: release
 on:
   push:
     paths-ignore:
-      - 'README.md'
-      - '.github/**'
+      - "README.md"
+      - ".github/**"
     branches:
       - main
 
   pull_request:
     paths-ignore:
-      - 'README.md'
-      - '.github/**'
+      - "README.md"
+      - ".github/**"
     branches:
       - main
 
@@ -24,7 +24,7 @@ jobs:
 
       - name: Get bump version
         id: bump_label
-        uses: SamirMarin/get-labels-action@v0
+        uses: 77jennifer77/get-labels-action@v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           label_key: bump
@@ -33,7 +33,7 @@ jobs:
 
       - name: Get tag prefix
         id: tag_prefix
-        uses: SamirMarin/get-labels-action@v0
+        uses: 77jennifer77/get-labels-action@v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           label_key: version
