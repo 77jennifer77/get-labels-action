@@ -23,6 +23,7 @@
   },
   "type": "commonjs",
   "devDependencies": {
+    "@vercel/ncc": "^0.44.0",
     "typescript": "^6.0.3"
   }
 }
