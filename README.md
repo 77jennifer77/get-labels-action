@@ -1,16 +1,22 @@
 # get-labels-action
+
+Github actions training
 This Github action gets a label by key and pr labels
+
 1. Gets keyed label on pr
+
 - - if specified label_key is `bump` and labels on PR are `["bug", "issue", "version:beta", "bump:patch"]`
 - - - outputs `label_value`=`"patch"`
 
 2. Gets the list of labels on pr
+
 - - if labels on PR are `["bug", "issue", "version:beta", "bump:patch"]`
 - - - outputs `labels`=`"bug,issue,version:beta,bump:patch"`
 
 ## Inputs
 
 ### `label_key`
+
 The key used to get the label_value by key, i.e `<label_key>:<label_value>`
 
 ```
@@ -22,6 +28,7 @@ label_key defaults to ""
 ```
 
 ### `default_label_value`
+
 When no label with the label key is specified the default label_value to output
 
 ```
@@ -34,11 +41,13 @@ defaults to ""
 ```
 
 ### `label_value_order`
-Order of precedence for label_values, 
-```
-example 
 
-if the label_key is `bump` 
+Order of precedence for label_values,
+
+```
+example
+
+if the label_key is `bump`
 
 and multiple labels appear in the pr with key bump i.e `["bump:patch", "bump:minor", "bump:major"]`
 
@@ -47,8 +56,8 @@ and the label_value_order is `"patch,minor,major"` the patch value would take pr
 defaults to ""
 ```
 
-
 ### `github_token`
+
 The token used to get labels for non pull_request events, i.e push events
 
 not needed if labels are only needed for pull_request events
@@ -57,16 +66,18 @@ not needed if labels are only needed for pull_request events
 example
 
 ${{ secrets.GITHUB_TOKEN }}
- 
+
 defaults ""
 ```
 
 ## Outputs
 
 ### `label_value`
+
 The label value output. If key is bump and label is `bump:patch` the `label_value=patch`
 
 ### `labels`
+
 The labels on the pr seperated by a comma. If labels are `["hello", "now", "new:now"]` the `labels="hello,now,new:now"`
 
 ## Example usage
@@ -88,7 +99,7 @@ The labels on the pr seperated by a comma. If labels are `["hello", "now", "new:
     github_token: ${{ secrets.GITHUB_TOKEN }}
     label_key: version
     default_label_value: v
-    
+
 - name: Bump version and push tag
   id: tag_version
   uses: mathieudutour/github-tag-action@v6.1
