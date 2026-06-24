@@ -34,6 +34,10 @@ async function getPushEventLabels() {
     },
   );
 
+  if (!pulls.data || pulls.data.length === 0) {
+    return [];
+  }
+
   return pulls.data[0]?.labels || [];
 }
 
