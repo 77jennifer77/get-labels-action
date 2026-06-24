@@ -10361,7 +10361,7 @@ exports.processTrigger = processTrigger;
 const core = __importStar(__nccwpck_require__(7484));
 const core_1 = __nccwpck_require__(1897);
 const github = __importStar(__nccwpck_require__(3228));
-// Main entry point for the action
+// Main entry point for the action - processes labels from PR or push events
 async function processTrigger() {
     let labels;
     if (github.context.eventName === "pull_request") {

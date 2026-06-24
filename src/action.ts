@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 import { Octokit } from "@octokit/core";
 import * as github from "@actions/github";
 
-// Main entry point for the action
+// Main entry point for the action - processes labels from PR or push events
 export async function processTrigger() {
   let labels;
   if (github.context.eventName === "pull_request") {
