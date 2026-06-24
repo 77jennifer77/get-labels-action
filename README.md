@@ -26,6 +26,9 @@ This Github action gets a label by key and pr labels
    Push to GitHub
    Create a release: git tag -a v0 -m "Initial release" && git push origin v0
 
+4. create pr
+   make a change and create a pr to test workflow
+
 ## Inputs
 
 ### `label_key`
