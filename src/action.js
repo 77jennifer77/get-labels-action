@@ -9,8 +9,8 @@ export async function processTrigger() {
     } else {
         labels = await getPushEventLabels()
     }
-    if (labels.labels === 0) {
-        return labels
+    if (!labels || labels.length === 0) {
+        return labels || []
     }
 
     setOutputs(labels)
@@ -21,7 +21,7 @@ async function getPushEventLabels() {
     const github_token = core.getInput('github_token');
     if (github_token === '') {
         core.error("github_token required for push events")
-        return
+        return []
     }
     // Octokit.js
     // https://github.com/octokit/core.js#readme
@@ -37,7 +37,10 @@ async function getPushEventLabels() {
             'X-GitHub-Api-Version': '2022-11-28'
         }
     })
-    return pulls.data[0].labels
+    if (!pulls.data || pulls.data.length === 0) {
+        return []
+    }
+    return pulls.data[0].labels || []
 }
 
 function setOutputs(labels) {
