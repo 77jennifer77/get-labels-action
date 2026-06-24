@@ -13,6 +13,19 @@ This Github action gets a label by key and pr labels
 - - if labels on PR are `["bug", "issue", "version:beta", "bump:patch"]`
 - - - outputs `labels`=`"bug,issue,version:beta,bump:patch"`
 
+## Reproducible Steps / How to create project bundle
+
+1. install bundler
+   npm install --save-dev @vercel/ncc
+
+2. build with bundler
+   npx ncc build src/action.ts -o dist
+
+3. testing steps
+   Commit all changes
+   Push to GitHub
+   Create a release: git tag -a v0 -m "Initial release" && git push origin v0
+
 ## Inputs
 
 ### `label_key`
